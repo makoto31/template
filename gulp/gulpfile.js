@@ -46,3 +46,24 @@ gulp.task('watch', function(){
 
 // デフォルト実行タスク
 gulp.task('default', ['js', 'css', 'watch']);
+
+
+// 以下、browser-sync
+var browser = require("browser-sync");
+gulp.task('browser', function(){
+    browser({
+        server: {
+            baseDir: "../"
+        }
+        ,files: ['dest/*.html', 'dest/*.js', 'dest/*.css']
+        ,ui: false
+        ,ghostMode: false
+        ,watchOptions: {
+            ignoreInitial: true
+            ,ignored: '*.*'
+        }
+        ,startPath: '/gulp/dest/index.html'
+    });
+});
+
+
